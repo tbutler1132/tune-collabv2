@@ -4,6 +4,7 @@ import Login from './Login'
 import Home from './Home'
 import Signup from './Signup'
 import Navbar from './Navbar'
+import TracksContainer from './Tracks/TrackContainer'
 import {Route, Switch, withRouter} from 'react-router-dom'
 
 class App extends React.Component{
@@ -73,6 +74,7 @@ class App extends React.Component{
         <Route path="/login" render={() => <Login submitHandler={this.loginHandler} />} /> 
         <Route path="/signup" render={() => <Signup submitHandler={this.signupHandler} />} />
         <Route path="/home" render={() => <Home user={this.state.user}/>} />
+        <Route path="/tracks" render={() => <TracksContainer user={this.state.user} />} />
       </Switch>
       </div>
     )
