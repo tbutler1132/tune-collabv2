@@ -14,11 +14,10 @@ class TrackContainer extends Component {
 
 
     renderTracks = () => {
-        return this.props.tracks.map(songObj => <Track key={songObj.id} songObj={songObj} />)
+        return this.props.tracks.map(songObj => <Track key={songObj.id} songObj={songObj} history={this.props.history}/>)
     }
 
     render() {
-        console.log(this.props)
         return(
             <>
             {this.props.user ?
@@ -29,11 +28,11 @@ class TrackContainer extends Component {
                     <Route path="/tracks/:id" render={({match}) => {
                         const id = parseInt(match.params.id)
                         const foundTrack = this.props.tracks.find((track) => track.id === id)
-                        return <Track songObj={foundTrack} user={this.props.user}/>
+                        return <Track songObj={foundTrack} user={this.props.user} history={this.props.history}/>
                     }}/>
 
                     <Route path="/tracks" render={() =>
-                        <div className="track-index-container">
+                        <div>
                             {this.renderTracks()}
                         </div>                     
                     } />
